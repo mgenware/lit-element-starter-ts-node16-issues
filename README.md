@@ -1,134 +1,122 @@
-# LitElement TypeScript starter
+To demonstrate compile issues of [lit-element-starter-ts](https://github.com/lit/lit-element-starter-ts) and TypeScript 4.7 Node16 module.
 
-This project includes a sample component using LitElement with TypeScript.
+This is a fork of [lit-element-starter-ts](https://github.com/lit/lit-element-starter-ts) with the following changes:
 
-This template is generated from the `lit-starter-ts` package in [the main Lit
-repo](https://github.com/lit/lit). Issues and PRs for this template should be
-filed in that repo.
+- Upgraded dependencies
+- Update `tsconfig.json` to use TypeScript 4.7 `node16`:
+  - Set `module` to `node16`
+  - Set `moduleResolution` to `node16`
 
-## Setup
+To repro the issue:
 
-Install dependencies:
+- Clone this repo
+- Install dependencies `npm i`
+- Run `npm run build && npm test`.
 
-```bash
-npm i
+Output:
+
 ```
+node_modules/@open-wc/semantic-dom-diff/chai-dom-diff-plugin.d.ts:3:29 - error TS2835: Relative import paths need explicit file extensions in EcmaScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean './get-diffable-html.js'?
 
-## Build
+3 import { DiffOptions } from "./get-diffable-html";
+                              ~~~~~~~~~~~~~~~~~~~~~
 
-This sample uses the TypeScript compiler to produce JavaScript that runs in modern browsers.
+node_modules/@open-wc/testing/index.d.ts:3:22 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
 
-To build the JavaScript version of your component:
+3 export { html } from '@open-wc/testing-helpers';
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-```bash
-npm run build
+node_modules/@open-wc/testing/index.d.ts:4:30 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+4 export { unsafeStatic } from '@open-wc/testing-helpers';
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:5:32 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+5 export { triggerBlurFor } from '@open-wc/testing-helpers';
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:6:33 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+6 export { triggerFocusFor } from '@open-wc/testing-helpers';
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:7:26 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+7 export { oneEvent } from '@open-wc/testing-helpers';
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:8:22 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+8 export { isIE } from '@open-wc/testing-helpers';
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:9:26 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+9 export { defineCE } from '@open-wc/testing-helpers';
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:10:26 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+10 export { aTimeout } from '@open-wc/testing-helpers';
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:11:27 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+11 export { nextFrame } from '@open-wc/testing-helpers';
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:12:28 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+12 export { litFixture } from '@open-wc/testing-helpers';
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:13:32 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+13 export { litFixtureSync } from '@open-wc/testing-helpers';
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:14:25 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+14 export { fixture } from '@open-wc/testing-helpers';
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:15:29 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+15 export { fixtureSync } from '@open-wc/testing-helpers';
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:16:32 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+16 export { fixtureCleanup } from '@open-wc/testing-helpers';
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:17:32 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+17 export { elementUpdated } from '@open-wc/testing-helpers';
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+node_modules/@open-wc/testing/index.d.ts:18:27 - error TS7016: Could not find a declaration file for module '@open-wc/testing-helpers'. '/Users/m/lit-element-starter-ts/node_modules/@open-wc/testing-helpers/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/open-wc__testing-helpers` if it exists or add a new declaration (.d.ts) file containing `declare module '@open-wc/testing-helpers';`
+
+18 export { waitUntil } from '@open-wc/testing-helpers';
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Found 17 errors in 2 files.
 ```
-
-To watch files and rebuild when the files are modified, run the following command in a separate shell:
-
-```bash
-npm run build:watch
-```
-
-Both the TypeScript compiler and lit-analyzer are configured to be very strict. You may want to change `tsconfig.json` to make them less strict.
-
-## Testing
-
-This sample uses modern-web.dev's
-[@web/test-runner](https://www.npmjs.com/package/@web/test-runner) for testing. See the
-[modern-web.dev testing documentation](https://modern-web.dev/docs/test-runner/overview) for
-more information.
-
-Tests can be run with the `test` script, which will run your tests against Lit's development mode (with more verbose errors) as well as against Lit's production mode:
-
-```bash
-npm test
-```
-
-For local testing during development, the `test:dev:watch` command will run your tests in Lit's development mode (with verbose errors) on every change to your source files:
-
-```bash
-npm test:watch
-```
-
-Alternatively the `test:prod` and `test:prod:watch` commands will run your tests in Lit's production mode.
-
-## Dev Server
-
-This sample uses modern-web.dev's [@web/dev-server](https://www.npmjs.com/package/@web/dev-server) for previewing the project without additional build steps. Web Dev Server handles resolving Node-style "bare" import specifiers, which aren't supported in browsers. It also automatically transpiles JavaScript and adds polyfills to support older browsers. See [modern-web.dev's Web Dev Server documentation](https://modern-web.dev/docs/dev-server/overview/) for more information.
-
-To run the dev server and open the project in a new browser tab:
-
-```bash
-npm run serve
-```
-
-There is a development HTML file located at `/dev/index.html` that you can view at http://localhost:8000/dev/index.html. Note that this command will serve your code using Lit's development mode (with more verbose errors). To serve your code against Lit's production mode, use `npm run serve:prod`.
-
-## Editing
-
-If you use VS Code, we highly recommend the [lit-plugin extension](https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin), which enables some extremely useful features for lit-html templates:
-
-- Syntax highlighting
-- Type-checking
-- Code completion
-- Hover-over docs
-- Jump to definition
-- Linting
-- Quick Fixes
-
-The project is setup to recommend lit-plugin to VS Code users if they don't already have it installed.
-
-## Linting
-
-Linting of TypeScript files is provided by [ESLint](eslint.org) and [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint). In addition, [lit-analyzer](https://www.npmjs.com/package/lit-analyzer) is used to type-check and lint lit-html templates with the same engine and rules as lit-plugin.
-
-The rules are mostly the recommended rules from each project, but some have been turned off to make LitElement usage easier. The recommended rules are pretty strict, so you may want to relax them by editing `.eslintrc.json` and `tsconfig.json`.
-
-To lint the project run:
-
-```bash
-npm run lint
-```
-
-## Formatting
-
-[Prettier](https://prettier.io/) is used for code formatting. It has been pre-configured according to the Lit's style. You can change this in `.prettierrc.json`.
-
-Prettier has not been configured to run when committing files, but this can be added with Husky and and `pretty-quick`. See the [prettier.io](https://prettier.io/) site for instructions.
-
-## Static Site
-
-This project includes a simple website generated with the [eleventy](11ty.dev) static site generator and the templates and pages in `/docs-src`. The site is generated to `/docs` and intended to be checked in so that GitHub pages can serve the site [from `/docs` on the master branch](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-
-To enable the site go to the GitHub settings and change the GitHub Pages &quot;Source&quot; setting to &quot;master branch /docs folder&quot;.</p>
-
-To build the site, run:
-
-```bash
-npm run docs
-```
-
-To serve the site locally, run:
-
-```bash
-npm run docs:serve
-```
-
-To watch the site files, and re-build automatically, run:
-
-```bash
-npm run docs:watch
-```
-
-The site will usually be served at http://localhost:8000.
-
-## Bundling and minification
-
-This starter project doesn't include any build-time optimizations like bundling or minification. We recommend publishing components as unoptimized JavaScript modules, and performing build-time optimizations at the application level. This gives build tools the best chance to deduplicate code, remove dead code, and so on.
-
-For information on building application projects that include LitElement components, see [Build for production](https://lit.dev/docs/tools/production/) on the Lit site.
-
-## More information
-
-See [Get started](https://lit.dev/docs/getting-started/) on the Lit site for more information.
